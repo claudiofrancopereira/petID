@@ -5,7 +5,7 @@ import { PetFile } from './PetFile'
 
 import { v4 } from 'uuid'
 
-@Entity('petID')
+@Entity('pets')
 class Pet {
     @PrimaryColumn()
     readonly id: string;
@@ -44,7 +44,7 @@ class Pet {
     email: string;
 
     @Column()
-    micrichip: string;
+    microchip: string;
 
     @Column()
     notes: string;
