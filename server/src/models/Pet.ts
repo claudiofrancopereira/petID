@@ -8,7 +8,7 @@ import { v4 } from 'uuid'
 @Entity('pets')
 class Pet {
     @PrimaryColumn()
-    readonly id: string;
+    microchip: string;
 
     @Column()
     name: string;
@@ -44,9 +44,6 @@ class Pet {
     email: string;
 
     @Column()
-    microchip: string;
-
-    @Column()
     notes: string;
 
     @CreateDateColumn()
@@ -66,12 +63,6 @@ class Pet {
     })
     @JoinColumn({ name: 'report' })
     reports: Report[];
-
-    constructor() {
-        if (!this.id) {
-            this.id = v4();
-        }   
-    }
 
 }
 

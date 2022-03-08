@@ -35,7 +35,7 @@ export class createReportFiles1646639481077 implements MigrationInterface {
           name: 'reportIDFiles',
           columnNames: ['reportID'],
           referencedTableName: 'reports',
-          referencedColumnNames: ['id'],
+          referencedColumnNames: ['microchip'],
           onUpdate: 'CASCADE',
           onDelete: 'CASCADE',
         }

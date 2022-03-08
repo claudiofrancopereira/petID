@@ -33,10 +33,10 @@ export class createPetFiles1646640414575 implements MigrationInterface {
       ],
       foreignKeys: [
         {
-          name: 'petFiles',
+          name: 'PetFiles',
           columnNames: ['petID'],
-          referencedTableName: 'petID',
-          referencedColumnNames: ['id'],
+          referencedTableName: 'pets',
+          referencedColumnNames: ['microchip'],
           onUpdate: 'CASCADE',
           onDelete: 'CASCADE',
         }

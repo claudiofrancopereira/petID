@@ -1,5 +1,5 @@
-import { Request, Response } from 'express'
-import { getRepository } from 'typeorm'
+import { Request, Response } from 'express';
+import { getRepository } from 'typeorm';
 import { Pet } from '../models/Pet';
 
 export default {
@@ -7,6 +7,7 @@ export default {
         const petsRepository = getRepository(Pet);
 
         const {
+            microchip,
             name,
             breed,
             color,
@@ -18,11 +19,16 @@ export default {
             cpf,
             rg,
             email,
-            microchip,
             notes
         } = request.body
 
+        const requestFiles = request.files as Express.Multer.File[];
+        const files = requestFiles.map(file => {
+            return { path: file.filename }
+        });
+
         const pet = petsRepository.create({
+            microchip,
             name,
             breed,
             color,
@@ -34,8 +40,8 @@ export default {
             cpf,
             rg,
             email,
-            microchip,
-            notes
+            notes,
+            files
         });
 
         await petsRepository.save(pet);
@@ -47,7 +53,9 @@ export default {
     async index(request: Request, response: Response) {
         const petsRepository = getRepository(Pet);
 
-        const pets = await petsRepository.find();
+        const pets = await petsRepository.find({
+            relations: ['files']
+        });
 
         return response.json(pets)
     }

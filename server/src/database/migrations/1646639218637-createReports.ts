@@ -45,8 +45,8 @@ export class createReports1646639218637 implements MigrationInterface {
         {
           name: 'PetReport',
           columnNames: ['petID'],
-          referencedTableName: 'petID',
-          referencedColumnNames: ['id'],
+          referencedTableName: 'pets',
+          referencedColumnNames: ['microchip'],
           onUpdate: 'CASCADE',
           onDelete: 'CASCADE',
         }

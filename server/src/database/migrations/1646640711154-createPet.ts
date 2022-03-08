@@ -7,8 +7,8 @@ export class createPet1646640711154 implements MigrationInterface {
       name: 'pets',
       columns: [
         {
-          name: 'id',
-          type: 'uuid',
+          name: 'microchip',
+          type: 'varchar',
           isPrimary: true
         },
         {
@@ -53,10 +53,6 @@ export class createPet1646640711154 implements MigrationInterface {
         },
         {
           name: 'email',
-          type: 'varchar'
-        },
-        {
-          name: 'microchip',
           type: 'varchar'
         },
         {
