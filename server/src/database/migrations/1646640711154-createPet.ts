@@ -7,7 +7,7 @@ export class createPet1646640711154 implements MigrationInterface {
       name: 'pets',
       columns: [
         {
-          name: 'microchip',
+          name: 'id',
           type: 'varchar',
           isPrimary: true
         },
@@ -60,12 +60,12 @@ export class createPet1646640711154 implements MigrationInterface {
           type: 'varchar'
         },
         {
-          name: 'created_at',
+          name: 'createdAt',
           type: 'timestamp',
           default: 'now()'
         },
         {
-          name: 'updated_at',
+          name: 'updatedAt',
           type: 'timestamp',
           default: 'now()'
         }
@@ -75,7 +75,7 @@ export class createPet1646640711154 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('pet');
+    await queryRunner.dropTable('pets');
 
   }
 

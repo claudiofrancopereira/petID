@@ -7,7 +7,7 @@ export default {
         const petsRepository = getRepository(Pet);
 
         const {
-            microchip,
+            id,
             name,
             breed,
             color,
@@ -22,13 +22,8 @@ export default {
             notes
         } = request.body
 
-        const requestFiles = request.files as Express.Multer.File[];
-        const files = requestFiles.map(file => {
-            return { path: file.filename }
-        });
-
         const pet = petsRepository.create({
-            microchip,
+            id,
             name,
             breed,
             color,
@@ -41,7 +36,6 @@ export default {
             rg,
             email,
             notes,
-            files
         });
 
         await petsRepository.save(pet);
@@ -53,9 +47,7 @@ export default {
     async index(request: Request, response: Response) {
         const petsRepository = getRepository(Pet);
 
-        const pets = await petsRepository.find({
-            relations: ['files']
-        });
+        const pets = await petsRepository.find();
 
         return response.json(pets)
     }

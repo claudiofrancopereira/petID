@@ -1,14 +1,9 @@
 import { Column, CreateDateColumn, Entity, PrimaryColumn, OneToMany, JoinColumn } from 'typeorm'
 
-import { Report } from './Report';
-import { PetFile } from './PetFile'
-
-import { v4 } from 'uuid'
-
 @Entity('pets')
 class Pet {
     @PrimaryColumn()
-    microchip: string;
+    id: string;
 
     @Column()
     name: string;
@@ -47,23 +42,10 @@ class Pet {
     notes: string;
 
     @CreateDateColumn()
-    created_at: Date;
+    createdAt: Date;
 
     @CreateDateColumn()
-    updated_at: Date;
-
-    @OneToMany(() => PetFile, file => file.pet, {
-        cascade: ['insert', 'update']
-    })
-    @JoinColumn({ name: 'petID' })
-    files: PetFile[];
-
-    @OneToMany(() => Report, report => report.pet, {
-        cascade: ['insert', 'update']
-    })
-    @JoinColumn({ name: 'report' })
-    reports: Report[];
-
+    updatedAt: Date;
 }
 
 export { Pet }
